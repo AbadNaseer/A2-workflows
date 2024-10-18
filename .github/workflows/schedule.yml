@@ -1,0 +1,18 @@
+name: Automated Scheduled Tasks
+
+on:
+  schedule:
+    - cron: '0 0 * * *' 
+
+jobs:
+  maintenance-tasks:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Execute Maintenance Tasks
+      run: npm run tasks

@@ -1,0 +1,21 @@
+name: Automated Code Review
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  code-review:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Install Project Dependencies
+      run: npm ci
+
+    - name: Lint Code for Style Issues
+      run: npm run lint
+
+    - name: Execute Unit Tests
+      run: npm test

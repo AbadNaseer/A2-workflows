@@ -1,0 +1,19 @@
+name: CI Setup
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Project Dependencies
+      run: npm install
+    
+    - name: Execute Tests
+      run: npm run test
+    
+    - name: Perform Linting
+      run: npm run lint
